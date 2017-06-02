@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="rating" content="General">
+
+<link href="main.css" rel="stylesheet">
+
+<title>{{tracks[current].title}} - {{tracks[current].artist}}</title>
+
+<div id="app" v-if="tracks.length > 0">
+  <audio
+    :src="tracks[current].url"
+
+    id="player"
+    preload
+    controls
+
+    @loadstart="load"
+    @playing="playing = true; log('play')"
+    @pause="playing = false; log('pause')"
+    @ended="next">
+  </audio>
+
+  <ol id="pl">
+    <li
+      v-for="(track, index) in tracks"
+      :class="{current: index === current}"
+      @click="select(index)">
+      {{ track.artist }} - {{ track.title }}
+    </li>
+  </ol>
+</div>
+
+<script src="https://unpkg.com/vue"></script>
+<script src="main.js"></script>
+

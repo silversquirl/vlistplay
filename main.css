@@ -1,0 +1,26 @@
+#player {
+  width: 100%;
+}
+
+#pl {
+  padding: 0;
+  margin: 0;
+}
+
+#pl li {
+  list-style-type: none;
+  color: inherit;
+  padding: 1em;
+}
+
+#pl li:nth-child(odd)  { background: #ffffff; }
+#pl li:nth-child(even) { background: #f8f8f8; }
+
+#pl li.current {
+  background: #efefef;
+}
+
+#pl li:hover {
+  background: #e5e5e5;
+}
+
