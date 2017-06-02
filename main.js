@@ -25,24 +25,15 @@
           document.getElementById("player").play();
         }
       },
-      next: function () {
-        if (this.current + 1 < this.tracks.length) {
-          this.current++;
-          document.getElementById("player").play();
-        }
-      },
-      prev: function () {
-        if (this.current > 0) {
-          this.current--;
-          document.getElementById("player").play();
-        }
-      },
+      next: function () { this.select(this.current + 1); },
+      prev: function () { this.select(this.current + 1); },
       select: function (index) {
         if (index >= 0 && index < this.tracks.length) {
           this.playing = true;
           this.current = index;
           var player = document.getElementById("player");
           player.currentTime = 0;
+          player.play();
         }
       }
     },
