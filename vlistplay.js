@@ -1,4 +1,30 @@
 (function () {
+  const template = '\
+    <div v-if="tracks.length > 0"> \
+      <audio \
+        :src="tracks[current].url" \
+\
+        id="player" \
+        preload \
+        controls \
+\
+        @loadstart="load" \
+        @playing="playing = true" \
+        @pause="playing = false" \
+        @ended="next"> \
+      </audio> \
+\
+      <ol id="pl"> \
+        <li \
+          v-for="(track, index) in tracks" \
+          :class="{current: index === current}" \
+          @click="select(index)"> \
+          {{ track.artist }} - {{ track.title }} \
+        </li> \
+      </ol> \
+    </div> \
+  ';
+
   var loadJson = function (path) {
     return new Promise(function (res, rej) {
       var req = new XMLHttpRequest();
@@ -21,7 +47,7 @@
   };
 
   this.vListPlay = {
-    template: '#vListPlayTemplate',
+    template: template,
 
     props: {
       tracksUrl: {
