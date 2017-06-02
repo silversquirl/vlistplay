@@ -1,20 +1,20 @@
 (function () {
   const template = '\
-    <div v-if="tracks.length > 0"> \
+    <div class="vListPlay" v-if="tracks.length > 0"> \
       <audio \
         :src="tracks[current].url" \
 \
-        id="player" \
+        ref="player" \
         preload \
         controls \
 \
-        @loadstart="load" \
+        @loadstart="load($event)" \
         @playing="playing = true" \
         @pause="playing = false" \
-        @ended="next"> \
+        @ended="next($event)"> \
       </audio> \
 \
-      <ol id="pl"> \
+      <ol> \
         <li \
           v-for="(track, index) in tracks" \
           :class="{current: index === current}" \
@@ -73,17 +73,17 @@
     methods: {
       load: function () {
         if (this.playing) {
-          document.getElementById("player").play();
+          this.$refs.player.play();
         }
       },
 
       play: function () {
         this.playing = true;
-        document.getElementById("player").play();
+        this.$refs.player.play();
       },
 
       seek: function (position) {
-        document.getElementById("player").currentTime = position;
+        this.$refs.player.currentTime = position;
       },
 
       next: function () { this.select(this.current + 1); },

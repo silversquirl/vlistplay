@@ -1,26 +1,26 @@
-#player {
+.vListPlay audio {
   width: 100%;
 }
 
-#pl {
+.vListPlay ol {
   padding: 0;
   margin: 0;
 }
 
-#pl li {
+.vListPlay ol li {
   list-style-type: none;
   color: inherit;
   padding: 1em;
 }
 
-#pl li:nth-child(odd)  { background: #ffffff; }
-#pl li:nth-child(even) { background: #f8f8f8; }
+.vListPlay ol li:nth-child(odd)  { background: #ffffff; }
+.vListPlay ol li:nth-child(even) { background: #f8f8f8; }
 
-#pl li.current {
+.vListPlay ol li.current {
   background: #efefef;
 }
 
-#pl li:hover {
+.vListPlay ol li:hover {
   background: #e5e5e5;
 }
 
