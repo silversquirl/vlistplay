@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 
-<link href="main.css" rel="stylesheet">
+<link href="vlistplay.css" rel="stylesheet">
 <title>vListPlay</title>
 
-<div id="app" v-if="tracks.length > 0">
+<script id="vListPlayTemplate" type="text/x-template">
+<div v-if="tracks.length > 0">
   <audio
     :src="tracks[current].url"
 
@@ -27,7 +28,13 @@
     </li>
   </ol>
 </div>
+</script>
+
+<div id="app">
+  <v-list-play></v-list-play>
+</div>
 
 <script src="https://unpkg.com/vue"></script>
-<script src="main.js"></script>
+<script src="vlistplay.js"></script>
+<script src="example.js"></script>
 
