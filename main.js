@@ -28,22 +28,31 @@
         current: 0,
         playing: false,
       },
+
       methods: {
-        log: console.log,
         load: function () {
           if (this.playing) {
             document.getElementById("player").play();
           }
         },
+
+        play: function () {
+          this.playing = true;
+          document.getElementById("player").play();
+        },
+
+        seek: function (position) {
+          document.getElementById("player").currentTime = position;
+        },
+
         next: function () { this.select(this.current + 1); },
         prev: function () { this.select(this.current + 1); },
+
         select: function (index) {
           if (index >= 0 && index < this.tracks.length) {
-            this.playing = true;
             this.current = index;
-            var player = document.getElementById("player");
-            player.currentTime = 0;
-            player.play();
+            this.seek(0);
+            this.play();
           }
         }
       },
